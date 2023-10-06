@@ -38,6 +38,7 @@ const Login = () => {
       const api = http();
       const user = await api.post("/login", body);
       localStorage.setItem("token", user.data.token);
+      localStorage.setItem("user", JSON.stringify(user.data.user));
       window.dispatchEvent(new Event("authenticated"));
       navigate("/");
     } catch (e) {
